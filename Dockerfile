@@ -39,17 +39,16 @@ RUN apt-get install -yqq libsfml-dev libglu1-mesa python3-pip wget
 
 RUN mkdir /epsibot
 WORKDIR /epsibot
-RUN pip3 install discord.py requests
-RUN wget https://cloud.kvaris.de/nextcloud/index.php/s/PenRbyZKt2scnwc/download -o epsibot.py
-RUN wget https://cloud.kvaris.de/nextcloud/index.php/s/Zb4GP9qzD2Y3dYw/download -o emptyempsilon.py
+RUN wget https://github.com/SLSX/emptyepsilon-docker/epsibot/requirements.txt
+RUN pip3 install -qr requirements.txt
+RUN wget https://github.com/SLSX/emptyepsilon-docker/epsibot/epsibot.py
+RUN wget https://github.com/SLSX/emptyepsilon-docker/epsibot/emptyepsilon.py
 
 RUN echo "default-server = unix:/run/user/1000/pulse/native \n autospawn = no \n daemon-binary = /bin/true \n enable-shm = false" > /etc/pulse/client.conf
 
 RUN useradd -u 1000 -G audio ee
 USER ee
 
-ENV DISPLAY :0
+EXPOSE 35666
 
-RUN /usr/local/bin/EmptyEpsilon headless=scenario_00_basic.lua
-# ENTRYPOINT ["/usr/local/bin/EmptyEpsilon"]
-# CMD ["fullscreen=0"]
+ENTRYPOINT ["/usr/bin/python3", "/epsibot/epsibot.py"]
