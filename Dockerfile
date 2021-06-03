@@ -39,10 +39,11 @@ RUN apt-get install -yqq libsfml-dev libglu1-mesa python3-pip wget
 
 RUN mkdir /epsibot
 WORKDIR /epsibot
-RUN wget https://github.com/SLSX/emptyepsilon-docker/epsibot/requirements.txt
+
+RUN wget https://raw.githubusercontent.com/SLSX/emptyepsilon-docker/main/epsibot/requirements.txt
 RUN pip3 install -qr requirements.txt
-RUN wget https://github.com/SLSX/emptyepsilon-docker/epsibot/epsibot.py
-RUN wget https://github.com/SLSX/emptyepsilon-docker/epsibot/emptyepsilon.py
+RUN wget https://raw.githubusercontent.com/SLSX/emptyepsilon-docker/main/epsibot/epsibot.py
+RUN wget https://raw.githubusercontent.com/SLSX/emptyepsilon-docker/main/epsibot/emptyepsilon.py
 
 RUN echo "default-server = unix:/run/user/1000/pulse/native \n autospawn = no \n daemon-binary = /bin/true \n enable-shm = false" > /etc/pulse/client.conf
 
