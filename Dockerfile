@@ -1,9 +1,9 @@
 FROM debian:10 as build
 # https://github.com/daid/EmptyEpsilon/wiki/Build-from-sources
 
-ENV VERSION_MAJOR "2020"
-ENV VERSION_MINOR "11"
-ENV VERSION_PATCH "23"
+ENV VERSION_MAJOR "2021"
+ENV VERSION_MINOR "03"
+ENV VERSION_PATCH "31"
 
 RUN apt-get update
 RUN apt-get install -yqq git build-essential libx11-dev cmake \
