@@ -10,7 +10,7 @@ import os
 
 
 DISCORD_API_TOKEN = os.getenv('DISCORD_API_TOKEN')
-DISCORD_BOT_OWNER = int(os.getenv('DISCORD_BOT_OWNER')) # may be None
+DISCORD_BOT_OWNER = int(os.getenv('DISCORD_BOT_OWNER') or -1)
 PRIVILEGED_ROLE = os.getenv('PRIVILEGED_ROLE')
 EE_EXECUTABLE = '/usr/local/bin/EmptyEpsilon'
 EE_SERVER_IP = requests.get('https://api.ipify.org').text
@@ -60,7 +60,7 @@ def restrict_to(role):
 @bot.event
 async def on_command_error(ctx, e):
     await ctx.send('Sorry, etwas ist schief gelaufen...')
-    if DISCORD_BOT_OWNER is not None:
+    if DISCORD_BOT_OWNER != -1:
         user = await bot.fetch_user(DISCORD_BOT_OWNER)
         await user.send(f'Befehl: {ctx.message.content}\nException: {e}')
 

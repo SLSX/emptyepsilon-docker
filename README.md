@@ -23,9 +23,6 @@ The bot controls the server. Type !help, !hilfe or !h in Discord to list the com
 **It's speaking german!**  
 Yes, it's not multilingual at the moment. Sorry.
 
-**I get an error `TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'`**  
-`DISCORD_BOT_OWNER` may not be empty or missing. This will be fixed in a future version.
-
 **How do i get an api token?**  
 https://discordpy.readthedocs.io/en/stable/discord.html
 
